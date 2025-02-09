@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Code Generator</title>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-picker@2.4.0/dist/vanilla-picker.min.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="file"],
+        input[type="range"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .color-picker {
+            margin-bottom: 10px;
+        }
+        .qr-code-display {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data">
+            <label for="url">URL (Required):</label>
+            <input type="text" name="url" id="url" required>
+
+            <label for="logo">Logo (Optional):</label>
+            <input type="file" name="logo" id="logo">
+
+            <label for="bg_color">Background Color:</label>
+            <div class="color-picker">
+                <input type="color" name="bg_color" id="bg_color" value="#ffffff">
+            </div>
+
+            <label for="fill_color">Fill Color:</label>
+            <div class="color-picker">
+                 <input type="color" name="fill_color" id="fill_color" value="#000000">
+            </div>
+
+            <label for="qr_size">QR Code Size (5-50):</label>
+            <input type="range" name="qr_size" id="qr_size" min="5" max="50" value="15">
+
+            <label for="border_size">Border Size (0-5):</label>
+            <input type="range" name="border_size" id="border_size" min="0" max="5" value="1">
+
+            <input type="submit" value="Generate QR Code">
+        </form>
+
+        <div class="qr-code-display">
+            {% if qr_code_data_url %}
+                <img src="{{ qr_code_data_url }}" alt="QR Code">
+                <a href="{{ qr_code_data_url }}" download="qr_code.png">Download QR Code</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

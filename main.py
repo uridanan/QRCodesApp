@@ -3,7 +3,7 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import argparse
-from qr_generator import read_json_from_file, get_json_value, generate_qr_code_with_logo
+from qr_generator import read_json_from_file, get_json_value, generate_qr_code_file, generate_qr_code_bytes
 
 
 # TODO: QR code should be around the logo, not under the logo
@@ -40,7 +40,7 @@ if __name__ == "__main__":
                 border = get_json_value(json_data,"border",1)
 
                 # generate_qr_code(url, filename, "purple")
-                generate_qr_code_with_logo(data=url,
+                generate_qr_code_file(data=url,
                                            logo_file=logo_file,
                                            output_file=filename,
                                            fill_color=fill_color,
