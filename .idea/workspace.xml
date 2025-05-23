@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64a5ed3f-0694-4309-86bf-d629c6aae524" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/qrstyle.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/index_bak.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/QRCodesApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/QRCodesApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="64a5ed3f-0694-4309-86bf-d629c6aae524" name="Changes" comment="Flatten the app by including the files from qr_generator instead of referencing the wheel&#10;&#10;Port the UI changes I had tested locally">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/qrstyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/qrstyle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,6 +88,15 @@
       <option name="presentableId" value="Default" />
       <updated>1747978769496</updated>
     </task>
+    <task id="LOCAL-00001" summary="Flatten the app by including the files from qr_generator instead of referencing the wheel&#10;&#10;Port the UI changes I had tested locally">
+      <option name="closed" value="true" />
+      <created>1747983786104</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1747983786104</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,5 +121,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Flatten the app by including the files from qr_generator instead of referencing the wheel&#10;&#10;Port the UI changes I had tested locally" />
+    <option name="LAST_COMMIT_MESSAGE" value="Flatten the app by including the files from qr_generator instead of referencing the wheel&#10;&#10;Port the UI changes I had tested locally" />
   </component>
 </project>

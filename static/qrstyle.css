@@ -45,7 +45,7 @@ input[type="file"]:focus {
     margin-bottom: 15px;
 }
 .color-picker {
-    width: 50%;
+    width: 100%;
 }
 
 .slider-container {
@@ -180,4 +180,34 @@ input[type="submit"]:hover {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+.qr-button {
+    background-color: #007bff; /* Example color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Add some space above */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.qr-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* You might also want to apply these styles to other inputs if they look different */
+/* input[type="text"], */
+/* input[type="range"], */
+input[type="color"],
+select {
+    /* display: block; /* Ensures they take full width or align properly */
+    /* width: 100%; /* Or specific width like 250px for URL */
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 0px;
+    box-sizing: border-box;
 }

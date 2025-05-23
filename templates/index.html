@@ -23,29 +23,35 @@
                 <input type="text" name="url" id="url" content="URL" required>
             </div>
 
-            <label for="bg_color">Background Color:</label>
-            <div class="color-picker">
-                <input type="color" name="bg_color" id="bg_color" value="#ffffff">
+            <div class="color-picker-container">
+                <div class="color-picker">
+                    <label for="bg_color">Background Color:</label>
+                    <input type="color" name="bg_color" id="bg_color" value="#ffffff">
+                </div>
+
+                <div class="color-picker">
+                    <label for="fill_color">Fill Color:</label>
+                    <input type="color" name="fill_color" id="fill_color" value="#000000">
+                </div>
             </div>
 
-            <label for="fill_color">Fill Color:</label>
-            <div class="color-picker">
-                 <input type="color" name="fill_color" id="fill_color" value="#000000">
+            <div class="slider-container">
+                <label for="qr_size">QR Code Size (5-50):</label>
+                <input type="range" name="qr_size" id="qr_size" min="5" max="50" value="15">
             </div>
 
-            <label for="qr_size">QR Code Size (5-50):</label>
-            <input type="range" name="qr_size" id="qr_size" min="5" max="50" value="15">
+            <div class="slider-container">
+                <label for="border_size">Border Size (0-5):</label>
+                <input type="range" name="border_size" id="border_size" min="0" max="5" value="1">
+            </div>
 
-            <label for="border_size">Border Size (0-5):</label>
-            <input type="range" name="border_size" id="border_size" min="0" max="5" value="1">
-
-            <input type="submit" value="Generate QR Code">
+            <input type="submit" value="Generate QR Code" class="qr-button">
         </form>
 
         <div class="qr-code-display">
             {% if qr_code_data_url %}
-                <img src="{{ qr_code_data_url }}" alt="QR Code">
-                <a href="{{ qr_code_data_url }}" download="qr_code.png">Download QR Code</a>
+                <img src="{{ qr_code_data_url }}" alt="QR Code" id="qr-code-image">
+                <button type="button" id="download-qr-button" class="qr-button">Download QR Code</button>
             {% endif %}
         </div>
     </div>
@@ -76,6 +82,27 @@
                     }
                 }
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... (existing JavaScript for logo preview) ...
+
+            const downloadQrButton = document.getElementById('download-qr-button');
+            const qrCodeImage = document.getElementById('qr-code-image');
+
+            if (downloadQrButton && qrCodeImage) { // Ensure elements exist before adding listener
+                downloadQrButton.addEventListener('click', function() {
+                    const imageUrl = qrCodeImage.src;
+                    if (imageUrl) {
+                        const a = document.createElement('a');
+                        a.href = imageUrl;
+                        a.download = 'qr_code.png'; // Suggested filename
+                        document.body.appendChild(a); // Append to body is good practice for programmatic clicks
+                        a.click(); // Programmatically click the link
+                        document.body.removeChild(a); // Clean up the temporary link
+                    }
+                });
+            }
         });
     </script>
 </body>
