@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, send_from_directory
 import os
 from base64 import b64encode
-from qr_generator import read_json_from_file, get_json_value, generate_qr_code_file, generate_qr_code_bytes
+from jsoninputfile import read_json_from_file, get_json_value 
+from qrcodes import generate_qr_code_file, generate_qr_code_bytes
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'  # Directory to store uploaded logos

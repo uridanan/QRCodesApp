@@ -3,7 +3,8 @@
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import argparse
-from qr_generator import read_json_from_file, get_json_value, generate_qr_code_file, generate_qr_code_bytes
+from qrcodes import generate_qr_code_file, generate_qr_code_bytes
+from jsoninputfile import read_json_from_file, get_json_value
 
 
 # TODO: QR code should be around the logo, not under the logo

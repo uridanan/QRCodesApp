@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">-->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='qrstyle.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>QR Code Generator</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <!--<label for="url">URL</label>-->
+            <div class="input-container">
+                <div id="image-placeholder" onclick="uploadLogo(this)">
+                    &#x21E7;
+                </div>
+                <input type="text" name="url" id="url" content="URL" required>
+            </div>
+
+            <div class="color-picker-container">
+                <div class="color-picker">
+                    <label for="bg_color">Background Color:</label>
+                    <input type="color" name="bg_color" id="bg_color" value="#ffffff">
+                </div>
+                <div class="color-picker">
+                    <label for="fill_color">Fill Color:</label>
+                    <input type="color" name="fill_color" id="fill_color" value="#000000">
+                </div>
+            </div>
+
+            <div class="slider-container">
+                <label for="qr_size">QR Code Size (5-50):</label>
+                <input type="range" name="qr_size" id="qr_size" min="5" max="50" value="15" oninput="updateQrSizeValue(this.value)">
+                <span id="qrSizeValue" class="slider-value">15</span>
+            </div>
+
+            <div class="slider-container">
+                <label for="border_size">Border Size (0-5):</label>
+                <input type="range" name="border_size" id="border_size" min="0" max="5" value="1" oninput="updateBorderSizeValue(this.value)">
+                <span id="borderSizeValue" class="slider-value">1</span>
+            </div>
+
+            <input type="submit" value="Generate QR Code" class="waves-effect waves-light btn">
+        </form>
+
+        <div class="qr-code-display">
+            <img src="QR - Get_in_touch.jpeg" alt="QR Code">
+                <a href="QR - Get_in_touch.jpeg" download="qr_code.png" class="waves-effect waves-light btn">Download QR Code</a>
+            </div>
+    </div>
+
+    <!--<script src="script.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>-->
+    <script>
+        function updateQrSizeValue(value) {
+            document.getElementById("qrSizeValue").textContent = value;
+        }
+
+        function updateBorderSizeValue(value) {
+            document.getElementById("borderSizeValue").textContent = value;
+        }
+
+         function previewLogo(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $('#image-placeholder').html(`<img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: contain;">`);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                $('#image-placeholder').html('&#x21E7;');
+            }
+        }
+
+        function uploadLogo(value) {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.addEventListener('change', function() {
+                previewLogo(input);
+            });
+            input.click();
+        }
+
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+</html>

@@ -3,39 +3,7 @@
 <head>
     <title>QR Code Generator</title>
     <script src="https://cdn.jsdelivr.net/npm/vanilla-picker@2.4.0/dist/vanilla-picker.min.js"></script>
-    <style>
-        body {
-            font-family: sans-serif;
-        }
-        .container {
-            width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"],
-        input[type="file"],
-        input[type="range"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        .color-picker {
-            margin-bottom: 10px;
-        }
-        .qr-code-display {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .error {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='qrstyle.css') }}">
 </head>
 <body>
     <div class="container">
@@ -44,11 +12,16 @@
         <p class="error">{{ error }}</p>
         {% endif %}
         <form method="POST" enctype="multipart/form-data">
-            <label for="url">URL (Required):</label>
-            <input type="text" name="url" id="url" required>
 
-            <label for="logo">Logo (Optional):</label>
-            <input type="file" name="logo" id="logo">
+            <div class="input-container">
+                <div class="logo-upload-container">
+                    <input type="file" name="logo" id="logo" accept="image/*">
+                    <label for="logo" class="logo-upload-placeholder" id="logo-placeholder">
+                    <img src="#" alt="Logo Preview" class="logo-preview" id="logo-preview">
+                    <span class="upload-icon">&#x2191;</span> </label>
+                </div>
+                <input type="text" name="url" id="url" content="URL" required>
+            </div>
 
             <label for="bg_color">Background Color:</label>
             <div class="color-picker">
@@ -76,5 +49,34 @@
             {% endif %}
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoInput = document.getElementById('logo');
+            const logoPreview = document.getElementById('logo-preview');
+            const uploadIcon = document.getElementById('upload-icon');
+            const logoPlaceholder = document.getElementById('logo-placeholder');
+
+            logoInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        logoPreview.src = e.target.result;
+                        logoPreview.style.display = 'block'; // Show the image
+                        if (uploadIcon) { // Check if uploadIcon exists before trying to hide
+                            uploadIcon.style.display = 'none'; // Hide the upload icon
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    logoPreview.src = '#';
+                    logoPreview.style.display = 'none'; // Hide the image
+                    if (uploadIcon) { // Check if uploadIcon exists before trying to show
+                        uploadIcon.style.display = 'block'; // Show the upload icon
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
