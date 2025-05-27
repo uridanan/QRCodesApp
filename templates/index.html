@@ -18,7 +18,8 @@
                     <input type="file" name="logo" id="logo" accept="image/*">
                     <label for="logo" class="logo-upload-placeholder" id="logo-placeholder">
                     <img src="#" alt="Logo Preview" class="logo-preview" id="logo-preview">
-                    <span class="upload-icon">&#x2191;</span> </label>
+                    <!--<span id="upload-icon">&#x2191;</span> </label>-->
+                    <img src="{{ url_for('static', filename='upload image.png') }}" id="upload-icon" width="50px" height="50px">
                 </div>
                 <input type="text" name="url" id="url" content="URL" required>
             </div>
