@@ -5,7 +5,7 @@ from jsoninputfile import read_json_from_file, get_json_value
 from qrcodes import generate_qr_code_file, generate_qr_code_bytes
 
 app = Flask(__name__)
-UPLOAD_FOLDER = 'uploads'  # Directory to store uploaded logos
+UPLOAD_FOLDER = 'tmp/uploads'  # Directory to store uploaded logos
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create the directory if it doesn't exist
 print(f"Current working directory: {os.getcwd()}")
