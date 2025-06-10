@@ -1,10 +1,27 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args:
-    - 'build'
-    - '--tag=gcr.io/${qyou-r}/qrcodeapp:latest'
-    - '.' # Build context is the current directory
-  env:
-    - 'DOCKER_BUILDKIT=1' # <-- THIS IS THE KEY LINE
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--tag=gcr.io/qyou-r/qrcodeapp:latest'
+      - '.'
+    env:
+      - 'DOCKER_BUILDKIT=1'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/qyou-r/qrcodeapp:latest'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'qrcodeapp'
+      - '--image=gcr.io/qyou-r/qrcodeapp:latest'
+      - '--region=me-west1' # Change region if needed
+      - '--platform=managed'
+      - '--allow-unauthenticated'
+
 images:
-  - 'gcr.io/${qyou-r}/qrcodeapp:latest'
+  - 'gcr.io/qyou-r/qrcodeapp:latest'
