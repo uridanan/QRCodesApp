@@ -7,7 +7,7 @@
 # Want to help us make this template better? Share your feedback here: https://forms.gle/ybq9Krt8jtBL3iCk7
 
 ARG PYTHON_VERSION=3.13.0
-FROM python:${PYTHON_VERSION}-slim as base
+FROM python:${PYTHON_VERSION}-slim AS base
 
 # Prevents Python from writing pyc files.
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -47,6 +47,9 @@ COPY . .
 
 # Expose the port that the application listens on.
 EXPOSE 8000
+
+# Create the directory /tmp/uploads and make it writable by everyone (777 permissions)
+RUN mkdir -p /tmp/uploads && chmod -R 777 /tmp/uploads
 
 # Run the application.
 # CMD gunicorn '.venv.Lib.site-packages.werkzeug.wsgi' --bind=0.0.0.0:8000
