@@ -45,13 +45,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # Copy the source code into the container.
 COPY . .
 
-# Expose the port that the application listens on.
-EXPOSE 8000
+# Expose the port that the application listens on from the environment variable.
+ARG PORT=8000
+ENV PORT=${PORT}
+EXPOSE ${PORT}
 
 # Create the directory /tmp/uploads and make it writable by everyone (777 permissions)
 RUN mkdir -p /tmp/uploads && chmod -R 777 /tmp/uploads
 
-# Run the application.
-# CMD gunicorn '.venv.Lib.site-packages.werkzeug.wsgi' --bind=0.0.0.0:8000
-# CMD gunicorn 'app:app' --bind=0.0.0.0:8000
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8000", "app:app"]
+# Run the application using the PORT environment variable.
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:${PORT}", "app:app"]

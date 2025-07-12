@@ -4,6 +4,7 @@ from base64 import b64encode
 from jsoninputfile import read_json_from_file, get_json_value 
 from qrcodes import generate_qr_code_file, generate_qr_code_bytes
 
+
 app = Flask(__name__)
 UPLOAD_FOLDER = 'tmp/uploads'  # Directory to store uploaded logos
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -52,4 +53,10 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8000)) # Use PORT env var, or fallback to 8080
+    debug = os.environ.get("DEBUG", "false").lower() == "true"
+    if debug:
+        app.debug = True
+    else:
+        app.debug = False
+    app.run(host='0.0.0.0', port=port)
