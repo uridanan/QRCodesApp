@@ -2,18 +2,10 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
     args:
-    - '-c'
-    - DOCKER_BUILDKIT=1 docker build -t gcr.io/qyou-r/qrcodeapp:latest .
+      - '-c'
+      - DOCKER_BUILDKIT=1 docker build -t gcr.io/qyou-r/qrcodeapp:latest .
     env:
-    - 'DOCKER_BUILDKIT=1' # This line explicitly enables BuildKit for the Docker daemon
-
-  # - name: 'gcr.io/cloud-builders/docker'
-  #   args:
-  #     - 'build'
-  #     - '--tag=gcr.io/qyou-r/qrcodeapp:latest'
-  #     - '.'
-  #   env:
-  #     - 'DOCKER_BUILDKIT=1'
+      - 'DOCKER_BUILDKIT=1'
 
   - name: 'gcr.io/cloud-builders/docker'
     args:
@@ -33,3 +25,6 @@ steps:
 
 images:
   - 'gcr.io/qyou-r/qrcodeapp:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
