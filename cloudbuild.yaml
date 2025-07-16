@@ -23,7 +23,6 @@ steps:
       - '--platform=managed'
       - '--allow-unauthenticated'
     env:
-      - '--port 8000' # Ensure the port matches the one exposed in Dockerfile
       - 'PORT=8000' # Set the PORT environment variable for the app
 
 images:
