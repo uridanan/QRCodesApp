@@ -53,7 +53,7 @@ def index():
 
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 8000)) # Use PORT env var, or fallback to 8080
+    port = int(os.environ.get("PORT", 8000)) # Use PORT env var, or fallback to 8000
     debug = os.environ.get("DEBUG", "false").lower() == "true"
     if debug:
         app.debug = True
