@@ -22,6 +22,7 @@ steps:
       - '--region=me-west1' # Change region if needed
       - '--platform=managed'
       - '--allow-unauthenticated'
+      - '--port=8000' # Specify the port your application listens on      
     env:
       - 'PORT=8000' # Set the PORT environment variable for the app
 
