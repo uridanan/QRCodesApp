@@ -54,4 +54,4 @@ EXPOSE ${PORT}
 RUN mkdir -p /tmp/uploads && chmod -R 777 /tmp/uploads
 
 # Run the application using the PORT environment variable.
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:${PORT}", "app:app"]
+CMD gunicorn -w 4 -b 0.0.0.0:${PORT} app:app
