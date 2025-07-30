@@ -23,7 +23,7 @@ def generate_qr_code_bytes(data, logo_file, fill_color='black', back_color='whit
     try:
         # Create the QR code (adjust version and error correction as needed)
         qr = qrcode.QRCode(
-            version=5,  # Start with a lower version; increase if needed
+            version=7,  # Start with a lower version; increase if needed
             error_correction=qrcode.constants.ERROR_CORRECT_H,  # High error correction is recommended
             box_size=size,
             border=border,
