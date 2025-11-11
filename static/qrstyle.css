@@ -217,3 +217,45 @@ select {
     border-radius: 0px;
     box-sizing: border-box;
 }
+
+.qr-size-container {
+    display: inline-flex; /* place buttons side-by-side with no gaps */
+    gap: 0; /* ensure no gap introduced by parent */
+}
+
+/* replace existing .qr-size-btn rules with these to remove spacing */
+.qr-size-btn {
+    margin: 0;               /* no external spacing */
+    padding: 8px 14px;
+    border: 0;
+    background: #b1aeae8a;
+    cursor: pointer;
+    border-radius: 0;        /* square corners so buttons touch */
+    font-size: 16px;
+    transition: background 0.2s, border 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* optional thin separator between buttons (keeps visual separation but no gap) */
+.qr-size-btn + .qr-size-btn {
+    border-left: 1px solid rgba(0,0,0,0.08);
+}
+
+/* active look; keep connected corners for first/last */
+.qr-size-btn.active {
+    background: #0078d7;
+    color: #fff;
+    border-color: #0078d7;
+}
+
+/* give rounded ends while keeping middle buttons flush */
+.qr-size-container .qr-size-btn:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.qr-size-container .qr-size-btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}

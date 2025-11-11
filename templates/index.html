@@ -30,8 +30,12 @@
 
 
 
-            <div class="qr-size-container">                
-                <label>
+            <div class="qr-size-container">
+                <button type="button" id="btn-270" class="qr-size-btn{% if form_data.get('qr_size', '6') == '6' %} active{% endif %}">270px</button>
+                <button type="button" id="btn-540" class="qr-size-btn{% if form_data.get('qr_size', '12') == '12' %} active{% endif %}">540px</button>
+                <button type="button" id="btn-1080" class="qr-size-btn{% if form_data.get('qr_size') == '24' %} active{% endif %}">1080px</button>
+                <input type="hidden" name="qr_size" id="qr_size" value="{{ form_data.get('qr_size', '12') }}">                
+                <!-- <label>
                     <input type="radio" name="qr_size" value="6" {% if form_data.get('qr_size', '6') == '6' %}checked{% endif %}>
                     270px
                 </label>
@@ -42,7 +46,7 @@
                 <label>
                     <input type="radio" name="qr_size" value="24" {% if form_data.get('qr_size') == '24' %}checked{% endif %}>
                     1080px
-                </label>
+                </label> -->
             </div>
 
 
@@ -111,6 +115,35 @@
                     // Do not clear inputs; default browser behavior is fine
                     // No need to call event.preventDefault() unless you handle submission via JS
                     // This ensures inputs remain after submit if the page reloads with the same values
+                });
+            }
+        });
+    
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Push button logic for QR size
+            const btn270 = document.getElementById('btn-270');
+            const btn540 = document.getElementById('btn-540');
+            const btn1080 = document.getElementById('btn-1080');
+            const qrSizeInput = document.getElementById('qr_size');
+
+            function setActive(btn, value) {
+                btn270.classList.remove('active');
+                btn540.classList.remove('active');
+                btn1080.classList.remove('active');
+                btn.classList.add('active');
+                qrSizeInput.value = value;
+            }
+
+            if (btn270 && btn540 && btn1080 && qrSizeInput) {
+                btn270.addEventListener('click', function() {
+                    setActive(btn270, '6');
+                });
+                btn540.addEventListener('click', function() {
+                    setActive(btn540, '12');
+                });
+                btn1080.addEventListener('click', function() {
+                    setActive(btn1080, '24');
                 });
             }
         });
