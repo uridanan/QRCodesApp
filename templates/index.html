@@ -22,33 +22,29 @@
                         <img src="{{ url_for('uploads', filename=logo_url) }}" class="logo-preview" id="logo-preview" style="display: block;">                    
                     {% else %}
                         <img src="{{ url_for('static', filename='upload image.png') }}" class="logo-preview" id="logo-preview" style="display: block;">
-                    {% endif %}
-                    <!--<img src="{{ logo_url }}" id="upload-icon" width="50px" height="50px">-->
+                    {% endif %}                    
                 </div>
                 <input type="text" name="url" id="url" required value="{{ form_data.get('url', '') }}">
+                <input type="color" name="fill_color" id="fill_color" value="{{ form_data.get('fill_color', '#000000') }}">
             </div>
 
-            <div class="color-picker-container">
-                <div class="color-picker">
-                    <label for="bg_color">Background Color:</label>
-                    <input type="color" name="bg_color" id="bg_color" value="{{ form_data.get('bg_color', '#ffffff') }}">
-                </div>
 
-                <div class="color-picker">
-                    <label for="fill_color">Fill Color:</label>
-                    <input type="color" name="fill_color" id="fill_color" value="{{ form_data.get('fill_color', '#000000') }}">
-                </div>
+
+            <div class="qr-size-container">                
+                <label>
+                    <input type="radio" name="qr_size" value="6" {% if form_data.get('qr_size', '6') == '6' %}checked{% endif %}>
+                    270px
+                </label>
+                <label>
+                    <input type="radio" name="qr_size" value="12" {% if form_data.get('qr_size', '12') == '12' %}checked{% endif %}>
+                    540px
+                </label>
+                <label>
+                    <input type="radio" name="qr_size" value="24" {% if form_data.get('qr_size') == '24' %}checked{% endif %}>
+                    1080px
+                </label>
             </div>
 
-            <div class="slider-container">
-                <label for="qr_size">QR Code Size (5-50):</label>
-                <input type="range" name="qr_size" id="qr_size" min="5" max="50" value="{{ form_data.get('qr_size', 15) }}">
-            </div>
-
-            <div class="slider-container">
-                <label for="border_size">Border Size (0-5):</label>
-                <input type="range" name="border_size" id="border_size" min="0" max="5" value="{{ form_data.get('border_size', 1) }}">
-            </div>
 
             <input type="submit" value="Generate QR Code" class="qr-button">
         </form>
@@ -56,6 +52,7 @@
         <div class="qr-code-display">
             {% if qr_code_data_url %}
                 <img src="{{ qr_code_data_url }}" alt="QR Code" id="qr-code-image">
+                <br>
                 <button type="button" id="download-qr-button" class="qr-button">Download QR Code</button>
             {% endif %}
         </div>

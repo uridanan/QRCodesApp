@@ -4,14 +4,14 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #e0f2f7, #bbdefb);
+    background: linear-gradient(to bottom right, #e0f2f7, #f6f6f7);
 }
 .container {
-    width: 500px;
+    width: 600px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 1 4px 8px rgba(0, 0, 0, 0.15);
 }
 h1 {
     text-align: center;
@@ -41,8 +41,9 @@ input[type="file"]:focus {
 }
 .color-picker-container {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    flex-direction: column;
+    gap: 8px; /* Optional: adds space between items */
+    align-items: flex-start; /* Optional: aligns labels and inputs to the left */
 }
 .color-picker {
     width: 100%;
@@ -107,7 +108,7 @@ input[type="submit"]:hover {
     text-align: center;
 }
 .qr-code-display img {
-    max-width: 100%;
+    max-width: 270px;
     height: auto;
 }
 .error {
@@ -130,6 +131,7 @@ input[type="submit"]:hover {
 }
 
 .input-container {
+    height: 50px;
     display: flex;
     align-items: center; /* Vertically align items */
 }
@@ -141,6 +143,8 @@ input[type="submit"]:hover {
 .logo-upload-container {
     margin-bottom: 20px;
     text-align: center;
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
 }
 
 #logo {
@@ -180,8 +184,8 @@ input[type="submit"]:hover {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 40px;
+    height: 40px;
 }
 
 .qr-button {

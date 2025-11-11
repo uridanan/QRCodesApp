@@ -31,10 +31,10 @@ def index():
             return render_template("index.html", error="URL is required")
 
         logo = request.files.get("logo")
-        bg_color = request.form.get("bg_color") or "white"
+        bg_color = "white" # request.form.get("bg_color") or "white"
         fill_color = request.form.get("fill_color") or "black"
-        qr_size = int(request.form.get("qr_size")) or 15
-        border_size = int(request.form.get("border_size")) or 1
+        qr_size = int(request.form.get("qr_size")) or 12
+        border_size = 1 # int(request.form.get("border_size")) or 0
 
         if border_size > qr_size * 0.1:
             return render_template("index.html", error="Border size cannot exceed 10% of QR size")

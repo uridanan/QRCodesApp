@@ -3,7 +3,7 @@ import qrcode
 from PIL import Image
 
 
-def generate_qr_code_file(data, logo_file, output_file="qr_code.png", fill_color='black', back_color='white', size=10, border=4):
+def generate_qr_code_file(data, logo_file, output_file="qr_code.png", fill_color='black', back_color='white', size=12, border=0):
     """Embeds an image in the center of a QR code."""
     qr_image_bytes = generate_qr_code_bytes(data, logo_file, fill_color, back_color, size, border)
     saved_path = save_image_to_file(qr_image_bytes, output_file)  # Call the save function
@@ -17,7 +17,7 @@ def generate_qr_code_file(data, logo_file, output_file="qr_code.png", fill_color
     return saved_path
 
 
-def generate_qr_code_bytes(data, logo_file, fill_color='black', back_color='white', size=10, border=4):
+def generate_qr_code_bytes(data, logo_file, fill_color='black', back_color='white', size=12, border=0):
     """Embeds an image in the center of a QR code."""
 
     try:
