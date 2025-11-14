@@ -28,16 +28,18 @@ def index():
     if request.method == "POST":
         url = request.form.get("url")
         if not url:  # URL is mandatory
-            return render_template("index.html", error="URL is required")
+            # return render_template("index.html", error="URL is required")
+            return render_template("index.html", error="URL is required", form_data=form_data, logo_url=logo_url)
 
         logo = request.files.get("logo")
         bg_color = "white" # request.form.get("bg_color") or "white"
         fill_color = request.form.get("fill_color") or "black"
         qr_size = int(request.form.get("qr_size")) or 12
-        border_size = 1 # int(request.form.get("border_size")) or 0
+        border_size = 0 # int(request.form.get("border_size")) or 0
 
         if border_size > qr_size * 0.1:
-            return render_template("index.html", error="Border size cannot exceed 10% of QR size")
+            # return render_template("index.html", error="Border size cannot exceed 10% of QR size")
+            return render_template("index.html", error="Border size cannot exceed 10% of QR size", form_data=form_data, logo_url=logo_url)
 
         logo_path = None
         if logo and logo.filename:
