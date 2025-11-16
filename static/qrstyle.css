@@ -7,7 +7,7 @@ body {
     background: linear-gradient(to bottom right, #e0f2f7, #f6f6f7);
 }
 .container {
-    width: 600px;
+    width: 800px;
     padding: 20px;
     background-color: white;
     border-radius: 8px;
@@ -116,35 +116,26 @@ input[type="submit"]:hover {
     margin-top: 10px;
 }
 
-
-#image-placeholder {
-  width: 50px;
-  height: 50px;
-  border: 1px dashed #ccc;
-  text-align: center;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3em; /* Adjust symbol size */
-  color: #888; /* Symbol color */
-}
-
 .input-container {
-    height: 50px;
+    height: 100px;
     display: flex;
-    align-items: center; /* Vertically align items */
+    flex-grow: 1;
+    flex-direction: column; /* stack children vertically */
+    gap: 12px;              /* optional spacing between items */
+    align-items: stretch;   /* or 'flex-start' / 'center' depending on alignment */
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .input-container #url {
+    width: 100%;
     flex-grow: 1; /* Allow input to take remaining space */
-    margin-left: 10px; /* Add some space between placeholder and input */
 }
-.logo-upload-container {
-    margin-bottom: 20px;
-    text-align: center;
-    width: 50px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */
+
+.square-container {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
 }
 
 #logo {
@@ -155,8 +146,8 @@ input[type="submit"]:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
     border: 0px dashed #ccc;
     border-radius: 1px;
     cursor: pointer;
@@ -172,32 +163,32 @@ input[type="submit"]:hover {
     font-size: 75px; /* Adjust size of the arrow */
     color: #ccc;
     display: block; /* Initially visible */
-    width: 50px; /* Adjust as needed */
-    height: 50px; /* Adjust as needed */
+    width: 100%;
+    height: 100%;
 }
 
 .logo-preview {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
     object-fit: contain; /* Ensures the image fits without cropping */
     display: none; /* Initially hidden */
     position: absolute;
     top: 0;
     left: 0;
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 .qr-button {
     background-color: #007bff; /* Example color */
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 20px; /* Add some space above */
     transition: background-color 0.3s ease; /* Smooth hover effect */
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
 }
 
 .qr-button:hover {
@@ -258,4 +249,50 @@ select {
 .qr-size-container .qr-size-btn:last-child {
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+}
+
+.qr-horizontal-container {
+    display: flex; /* place buttons side-by-side with no gaps */
+    gap: 6;
+    flex-grow: 1;
+}
+
+#fill_color {
+    width: 40px;           /* Match qr-size-btn width */
+    height: 40px;          /* Match qr-size-btn height */
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;      /* Match button style */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;
+}
+
+.qr-reset-btn {
+    width: 40px;
+    height: 40px;
+    padding: 8px 14px;
+    margin: 0;
+    margin-left: 12px;
+    border: 0;
+    background: #b1aeae8a;
+    cursor: pointer;
+    border-radius: 0;
+    font-size: 16px;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qr-reset-btn:hover {
+    background: #0078d7;
+}
+
+.qr-reset-btn:active {
+    background: #0078d7;
+    color: #fff;
 }
